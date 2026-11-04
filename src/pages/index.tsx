@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Check, ExternalLink, UserRound } from "lucide-react";
 import { useSEO } from "../lib/useSEO";
-import { ZOHO_URL, ZOHO_EMBED, EMAIL, LINKEDIN } from "../lib/env";
+import { ZOHO_URL, ZOHO_EMBED, ZOHO_FORM_URL, EMAIL, LINKEDIN } from "../lib/env";
 import { SUMMARY, faqs, services, solutions, industries, steps, quality, roles, jobs } from "../data/content";
 import { Section, Heading, Reveal, CTA, CTASection } from "../components/ui";
 import { NetlifyForm } from "../components/Forms";
@@ -55,7 +55,7 @@ export function About() {
     <Section><div className="grid gap-10 md:grid-cols-2"><div><h2 className="text-2xl font-bold">Our vision</h2><p className="mt-3 text-charcoal/70">To develop into a trusted international technology consultancy delivering intelligent, scalable and practical solutions to organizations across industries.</p></div><div><h2 className="text-2xl font-bold">Our mission</h2><p className="mt-3 text-charcoal/70">To empower organizations through innovative technologies, qualified professionals and measurable technology-driven outcomes.</p></div></div></Section>
     <Section tint><Heading title="Every successful solution begins with understanding the right problem." sub="Our founding philosophy" /><ul className="grid gap-3 md:grid-cols-2">{["An idea must become an executable plan.", "A real business problem must be identified.", "The correct technology must be selected.", "Qualified and knowledgeable professionals must execute the solution.", "Results must be tested and verified.", "Deliverables must provide meaningful business value."].map((t) => <li key={t} className="flex gap-2 rounded-md bg-white p-4"><Check className="shrink-0 text-royal" size={18} aria-hidden />{t}</li>)}</ul></Section>
     <Section><div className="grid gap-10 md:grid-cols-3"><div className="flex aspect-square items-center justify-center rounded-lg bg-mist text-silver" role="img" aria-label="Founder photo placeholder"><UserRound size={72} /></div>
-            <div className="space-y-4 md:col-span-2"><h2 className="text-2xl font-bold">Vision and Message</h2>
+      <div className="space-y-4 md:col-span-2"><h2 className="text-2xl font-bold">Vision and Message</h2>
         <p>GJen Global was envisioned by Gracia Jeniefer with the belief that technology should address meaningful challenges and create measurable value.</p>
         <p>The team's professional background in Computer Science, Artificial Intelligence, Machine Learning, Data Analytics and Software Engineering has shaped GJen Global's focus on intelligent technology applications.</p>
         <p>With the advice and encouragement of mentors, including professional technocrats and experienced engineering minds, the vision evolved beyond simply developing a technology business into establishing a consultancy focused on identifying real industrial requirements, engaging qualified professionals and delivering practical solutions.</p>
@@ -89,7 +89,7 @@ export function Solutions() {
 export function Industries() {
   useSEO("/industries");
   return <>
-    <Section dark><h1 className="text-4xl font-extrabold">Industries We Serve with AI and Technology Solutions</h1><p className="mt-4 max-w-2xl text-silver">{SUMMARY} These are target industries and potential applications. </p></Section>
+    <Section dark><h1 className="text-4xl font-extrabold">Industries We Serve with AI and Technology Solutions</h1><p className="mt-4 max-w-2xl text-silver">{SUMMARY} These are target industries and potential applications.</p></Section>
     <Section><div className="grid gap-5 md:grid-cols-2">{industries.map((i) => <article key={i.name} className="rounded-lg border border-silver/40 p-6"><h2 className="text-lg font-bold">{i.name}</h2><dl className="mt-3 space-y-2 text-sm"><div><dt className="font-semibold">Common challenges</dt><dd className="text-charcoal/70">{i.challenges}</dd></div><div><dt className="font-semibold">Potential applications</dt><dd className="text-charcoal/70">{i.apps}</dd></div><div><dt className="font-semibold">Relevant services</dt><dd className="text-charcoal/70">{i.services}</dd></div></dl></article>)}</div></Section>
     <CTASection />
   </>;
@@ -105,19 +105,29 @@ export function Approach() {
   </>;
 }
 
+function ZohoFrame({ src, title, cls }: { src: string; title: string; cls: string }) {
+  return <div className="overflow-x-auto rounded-md border border-silver/40"><iframe title={title} src={src} loading="lazy" className={`w-full min-w-[900px] ${cls}`} /></div>;
+}
+
 export function Careers() {
   useSEO("/careers");
   const open = jobs.filter((j) => j.active);
+  const hosted = Boolean(ZOHO_URL) && ZOHO_EMBED;
   return <>
     <Section dark><h1 className="text-4xl font-extrabold">Build the Future of Intelligent Technology With Us.</h1><p className="mt-4 max-w-2xl text-silver">We are interested in connecting with talented professionals who are passionate about Artificial Intelligence, Machine Learning, Software Engineering and Data Science.</p></Section>
     <Section><div className="mb-10 flex flex-wrap items-end justify-between gap-4"><h2 className="text-3xl font-bold tracking-tight md:text-4xl">Open positions</h2><a href="#talent" className="btn btn-ghost">Join the talent community</a></div>
-      {open.length === 0 && <p className="rounded-md bg-mist p-5">There are no open positions right now. Join the talent community below and we will contact you when a suitable role opens.</p>}
-      <div className="grid gap-5">{open.map((j) => <article key={j.title} className="rounded-lg border border-silver/40 p-6"><h3 className="text-lg font-bold">{j.title}</h3><p className="mt-2 text-sm">{j.description}</p><ul className="mt-3 space-y-1 text-sm"><li><b>Skills:</b> {j.skills.join(", ")}</li><li><b>Qualifications:</b> {j.qualifications}</li><li><b>Experience:</b> {j.experience}</li><li><b>Type:</b> {j.type}</li><li><b>Location:</b> {j.location}</li><li><b>Pay:</b> {j.pay}</li>{j.deadline && <li><b>Deadline:</b> {j.deadline}</li>}</ul>{(j.applyUrl || ZOHO_URL) ? <a className="btn btn-primary mt-4" href={j.applyUrl || ZOHO_URL} target="_blank" rel="noopener noreferrer">Apply Now</a> : <Link className="btn btn-primary mt-4" to="/contact">Apply Now</Link>}</article>)}</div>
-      {ZOHO_URL && <a href={ZOHO_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost mt-6">View all roles on our career site <ExternalLink size={16} /></a>}
-      {ZOHO_URL && ZOHO_EMBED && <iframe title="GJen Global career site" src={ZOHO_URL} className="mt-6 h-[700px] w-full rounded-md border border-silver/40" />}
+      {hosted ? <>
+        <p className="mb-4 text-sm text-charcoal/70">Live openings from our recruitment platform. If the list is hard to read on your device, <a className="text-royal underline" href={ZOHO_URL} target="_blank" rel="noopener noreferrer">open the full career site</a>.</p>
+        <ZohoFrame src={ZOHO_URL} title="GJen Global open positions" cls="h-[800px]" />
+      </> : <>
+        {open.length === 0 && <p className="rounded-md bg-mist p-5">There are no open positions right now. Join the talent community below and we will contact you when a suitable role opens.</p>}
+        <div className="grid gap-5">{open.map((j) => <article key={j.title} className="rounded-lg border border-silver/40 p-6"><h3 className="text-lg font-bold">{j.title}</h3><p className="mt-2 text-sm">{j.description}</p><ul className="mt-3 space-y-1 text-sm"><li><b>Skills:</b> {j.skills.join(", ")}</li><li><b>Qualifications:</b> {j.qualifications}</li><li><b>Experience:</b> {j.experience}</li><li><b>Type:</b> {j.type}</li><li><b>Location:</b> {j.location}</li><li><b>Pay:</b> {j.pay}</li>{j.deadline && <li><b>Deadline:</b> {j.deadline}</li>}</ul>{(j.applyUrl || ZOHO_URL) ? <a className="btn btn-primary mt-4" href={j.applyUrl || ZOHO_URL} target="_blank" rel="noopener noreferrer">Apply Now</a> : <Link className="btn btn-primary mt-4" to="/contact">Apply Now</Link>}</article>)}</div>
+        {ZOHO_URL && <a href={ZOHO_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost mt-6">View all roles on our career site <ExternalLink size={16} /></a>}
+      </>}
+      <p className="mt-8 max-w-3xl text-xs text-charcoal/60">Candidate notice: by applying or sharing your profile, you consent to GJen Global storing and using your details to assess your suitability for current and future roles.{(ZOHO_URL || ZOHO_FORM_URL) ? " Applications are handled through Zoho Recruit, a third-party recruitment platform." : ""} You can ask us to access or delete your data at any time. See our <Link to="/privacy" className="underline">Privacy Policy</Link>.</p>
     </Section>
     <Section tint><Heading title="Areas we are interested in" sub="These are interest areas, not active vacancies." /><ul className="flex flex-wrap gap-2">{roles.map((r) => <li key={r} className="rounded-full bg-white px-4 py-2 text-sm">{r}</li>)}</ul></Section>
-    <Section id="talent"><Heading title="Talent community" sub="Share your profile for future opportunities." /><NetlifyForm formName="talent" /></Section>
+    <Section id="talent"><Heading title="Talent community" sub="Share your profile for future opportunities." />{ZOHO_FORM_URL ? <ZohoFrame src={ZOHO_FORM_URL} title="GJen Global talent community form" cls="h-[900px]" /> : <NetlifyForm formName="talent" />}</Section>
   </>;
 }
 
@@ -134,7 +144,7 @@ const legal = (title: string, path: string, paras: string[]) => () => {
   useSEO(path);
   return <Section><h1 className="text-4xl font-extrabold">{title}</h1><p className="mt-3 rounded-md bg-mist p-4 text-sm">Draft text. Have it reviewed by a qualified legal professional before launch.</p><div className="mt-6 max-w-2xl space-y-4">{paras.map((p) => <p key={p}>{p}</p>)}</div></Section>;
 };
-export const Privacy = legal("Privacy Policy", "/privacy", ["We collect only the details you submit through our forms, such as name, email, company and message.", "We use them to respond to enquiries and, if you join the talent community, to contact you about future roles.", "Forms are processed through our hosting provider. Career applications may be handled by a recruitment platform linked from this site.", "You may ask us to access, correct or delete your data at any time using the contact details on this site."]);
+export const Privacy = legal("Privacy Policy", "/privacy", ["We collect only the details you submit through our forms, such as name, email, company and message.", "We use them to respond to enquiries and, if you join the talent community, to contact you about future roles.", "Forms are processed through our hosting provider. Career applications may be handled by a third-party recruitment platform such as Zoho Recruit.", "You may ask us to access, correct or delete your data at any time using the contact details on this site."]);
 export const Terms = legal("Terms and Conditions", "/terms", ["The content on this site is general information about GJen Global, an emerging consultancy, and is not a binding offer.", "Solutions and outcomes are scoped and agreed in writing after a client-specific assessment.", "Illustrative use cases describe capabilities, not completed customer projects."]);
 
 export function NotFound() {

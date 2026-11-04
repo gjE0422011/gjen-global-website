@@ -1,7 +1,7 @@
 export type SeoEntry = { title: string; description: string; crumb: string };
 export const seo: Record<string, SeoEntry> = {
   "/": { crumb: "Home", title: "AI Consulting Company in Chennai | GJen Global", description: "GJen Global is a Chennai-based consultancy for AI, machine learning, software engineering and data analytics, serving clients in India, the UAE, the UK and Europe." },
-  "/about": { crumb: "About", title: "About GJen Global | AI & Data Consultancy, Chennai", description: "Meet GJen Global, an emerging AI and technology consultancy in Chennai. Read our vision, mission, founding philosophy, and the vision and message behind the company.." },
+  "/about": { crumb: "About", title: "About GJen Global | AI & Data Consultancy, Chennai", description: "Meet GJen Global, an emerging AI and technology consultancy in Chennai. Read our vision, mission, founding philosophy, and the vision and message behind the company." },
   "/services": { crumb: "Services", title: "AI, ML & Software Engineering Services in Chennai | GJen Global", description: "AI consultancy, machine learning, software engineering, data science, business intelligence and automation services from GJen Global in Chennai." },
   "/solutions": { crumb: "Solutions", title: "AI & Software Solutions for Business Problems | GJen Global", description: "Illustrative AI and software solutions: document processing, predictive analytics, process automation, computer vision and custom applications." },
   "/industries": { crumb: "Industries", title: "Industries We Serve: AI & Technology Applications | GJen Global", description: "Target industries and potential AI applications for GJen Global, including healthcare, finance, manufacturing, retail, logistics and education." },

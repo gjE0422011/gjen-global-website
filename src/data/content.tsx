@@ -35,7 +35,7 @@ export const steps = [
 ];
 export const quality = ["Data verification", "Software testing", "Model evaluation", "Performance monitoring", "Documentation", "Client acceptance criteria"];
 export const roles = ["AI/ML Engineer", "Software Engineer", "Data Analyst", "Data Scientist", "AI Research Associate", "Technical Consultant", "Business Development Executive"];
-export type Job = { title: string; active: boolean; description: string; skills: string[]; qualifications: string; experience: string; type: string; location: string; pay: string; deadline?: string; applyUrl?: string };
+export type Job = { title: string; active: boolean; datePosted: string; description: string; skills: string[]; qualifications: string; experience: string; type: string; location: string; pay: string; deadline?: string; applyUrl?: string };
 // Only roles with active: true are shown as open positions. Empty until you post a real role.
 export const jobs: Job[] = [];
 export const SUMMARY = "GJen Global is a Chennai-based consultancy offering AI, machine learning, software engineering and data analytics services.";
@@ -44,4 +44,5 @@ export const faqs = [
   { q: "How long does a machine learning project take?", a: "It depends on data quality and scope. A small proof of concept can take a few weeks, while larger builds take months. We give a timeline only after we have assessed your data and requirements." },
   { q: "Do you work with clients outside India?", a: "Yes. We are based in Chennai and are building relationships in India, the UAE, the wider Middle East, the UK and Europe. Most project work, such as workshops and delivery, can be done remotely." },
   { q: "What does an engagement cost?", a: "We do not publish fixed prices because every project differs. After an initial conversation and assessment, we send a written proposal covering scope, deliverables, timeline and fees for your approval." },
+  { q: "Is GJen Global an established company?", a: "No. GJen Global is an emerging venture. We say so openly, we do not claim past clients or certifications, and we describe our solutions as capabilities and illustrative use cases." },
 ];

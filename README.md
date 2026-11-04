@@ -35,3 +35,10 @@ Edit `src/data/content.tsx`. `jobs` is empty. Add an object with `active: true` 
 
 ## SEO and prerendering
 `npm run build` builds the app, then prerenders every route to real HTML (`dist/<route>/index.html`) with its own title, description, canonical, Open Graph tags and JSON-LD. It also writes `404.html` (served with a real 404 status), `sitemap.xml`, `robots.txt` and `llms.txt`. Page titles and descriptions live in `src/data/seo.ts`. Structured data is generated from `src/data/content.tsx` in `src/lib/schema.ts`. Set `VITE_SITE_URL` to your final domain, then redeploy.
+
+## Zoho Recruit careers integration
+Three optional variables control the Careers page (set them in Netlify, then redeploy):
+- `VITE_ZOHO_CAREERS_URL`: the job listing page URL from Zoho Recruit (Setup, Career Website, Career Site; the URL is shown under the page name).
+- `VITE_ZOHO_EMBED`: `true` shows that page inside the Careers page. `false` shows a button that opens it.
+- `VITE_ZOHO_APPLY_FORM_URL`: the URL of a Zoho Recruit candidate web form. When set, it replaces the built-in talent community form so profiles and resumes go straight into Zoho.
+Without these, the page uses the `jobs` list in `src/data/content.tsx` and the Netlify talent form. Active jobs in that list also produce Google for Jobs markup (give each a `datePosted` such as `2026-11-10`).
