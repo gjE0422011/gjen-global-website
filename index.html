@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<title>GJen Global</title>
+<meta name="theme-color" content="#0B1220" />
+<!--head-->
+</head>
+<body>
+<!-- Static forms so Netlify detects them at build time -->
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<input name="bot-field" /><input name="name" /><input name="email" /><input name="company" /><input name="country" /><input name="enquiryType" /><input name="service" /><textarea name="message"></textarea><input name="budget" /><input name="consent" />
+</form>
+<form name="talent" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<input name="bot-field" /><input name="name" /><input name="email" /><input name="area" /><input name="profileUrl" /><textarea name="message"></textarea><input name="consent" />
+</form>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

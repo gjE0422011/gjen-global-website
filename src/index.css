@@ -1,0 +1,10 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+html { scroll-behavior: smooth; }
+body { @apply bg-white font-sans text-midnight antialiased; }
+h1,h2,h3 { @apply font-display; }
+:focus-visible { outline: 2px solid #5D8CFF; outline-offset: 3px; }
+.btn { @apply inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold transition-colors; }
+.btn-primary { @apply bg-royal text-white hover:bg-electric; }
+.btn-ghost { @apply border border-silver/50 hover:border-electric; }
+.field { @apply w-full rounded-md border border-silver/60 bg-white px-3 py-2.5 text-sm; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
