@@ -8,7 +8,7 @@ export function schemasFor(path: string, site: string): object[] {
     "@context": "https://schema.org", "@type": ["Organization", "ProfessionalService"], "@id": `${site}/#organization`,
     name: NAME, alternateName: "GJen Global", url: `${site}/`, logo: `${site}/logo.svg`, image: `${site}/og-image.png`,
     description: seo["/"].description, slogan: "Intelligence. Innovation. Impact.",
-    founder: { "@type": "Person", name: "Gracia Jeniefer", jobTitle: "Founder" },
+    founder: { "@type": "Person", name: "Gracia Jeniefer", jobTitle:  "Founder and Chief Technology Officer" },
     address: { "@type": "PostalAddress", addressLocality: "Chennai", addressRegion: "Tamil Nadu", addressCountry: "IN" },
     areaServed: ["India", "United Arab Emirates", "Middle East", "United Kingdom", "Europe"],
     knowsAbout: ["Artificial intelligence", "Machine learning", "Software engineering", "Data science", "Data analytics", "Business intelligence", "Process automation"],
@@ -18,12 +18,12 @@ export function schemasFor(path: string, site: string): object[] {
   const out: object[] = [org];
   const ctx = "https://schema.org";
   if (path === "/") out.push({ "@context": ctx, "@type": "WebSite", name: "GJen Global", url: `${site}/`, publisher: { "@id": `${site}/#organization` } });
-  if (path === "/about") out.push({ "@context": ctx, "@type": "Person", "@id": `${site}/#founder`, name: "Gracia Jeniefer", jobTitle: "Founder", worksFor: { "@id": `${site}/#organization` } });
+  if (path === "/about") out.push({ "@context": ctx, "@type": "Person", "@id": `${site}/#founder`, name: "Gracia Jeniefer", jobTitle: "Founder and Chief Technology Officer", worksFor: { "@id": `${site}/#organization` } });
   if (path === "/services") services.forEach((s) => out.push({ "@context": ctx, "@type": "Service", name: s.title, serviceType: s.title, description: `${s.problem} ${s.approach}`, provider: { "@id": `${site}/#organization` }, areaServed: ["India", "United Arab Emirates", "United Kingdom", "Europe"] }));
   if (path === "/" || path === "/services") out.push({ "@context": ctx, "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) });
   if (path !== "/" && path !== "/404") out.push({ "@context": ctx, "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${site}/` }, { "@type": "ListItem", position: 2, name: seo[path].crumb, item: `${site}${path}` }] });
   return out;
 }
 export function llmsTxt(site: string) {
-  return `# ${NAME}\n\n> GJen Global is an emerging, Chennai-based consultancy for AI, machine learning, software engineering and data analytics. It is an early-stage venture and does not claim existing clients or certifications.\n\n## Services\n${services.map((s) => `- [${s.title}](${site}/services): ${s.problem}`).join("\n")}\n\n## Key pages\n${["/about", "/services", "/solutions", "/industries", "/approach", "/careers", "/contact"].map((p) => `- [${seo[p].crumb}](${site}${p}): ${seo[p].description}`).join("\n")}\n\n## Facts\n- Location: Chennai, Tamil Nadu, India\n- Founder: Gracia Jeniefer\n- Target markets: India, UAE, Middle East, UK, Europe\n`;
+  return `# ${NAME}\n\n> GJen Global is an emerging, Chennai-based consultancy for AI, machine learning, software engineering and data analytics. It is an early-stage venture .\n\n## Services\n${services.map((s) => `- [${s.title}](${site}/services): ${s.problem}`).join("\n")}\n\n## Key pages\n${["/about", "/services", "/solutions", "/industries", "/approach", "/careers", "/contact"].map((p) => `- [${seo[p].crumb}](${site}${p}): ${seo[p].description}`).join("\n")}\n\n## Facts\n- Location: Chennai, Tamil Nadu, India\n- Founder and CTO: Gracia Jeniefer\n- Target markets: India, UAE, Middle East, UK, Europe\n`;
 }
