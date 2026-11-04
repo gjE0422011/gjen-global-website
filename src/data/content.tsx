@@ -44,5 +44,4 @@ export const faqs = [
   { q: "How long does a machine learning project take?", a: "It depends on data quality and scope. A small proof of concept can take a few weeks, while larger builds take months. We give a timeline only after we have assessed your data and requirements." },
   { q: "Do you work with clients outside India?", a: "Yes. We are based in Chennai and are building relationships in India, the UAE, the wider Middle East, the UK and Europe. Most project work, such as workshops and delivery, can be done remotely." },
   { q: "What does an engagement cost?", a: "We do not publish fixed prices because every project differs. After an initial conversation and assessment, we send a written proposal covering scope, deliverables, timeline and fees for your approval." },
-  { q: "Is GJen Global an established company?", a: "No. GJen Global is an emerging venture. We say so openly, we do not claim past clients or certifications, and we describe our solutions as capabilities and illustrative use cases." },
 ];
