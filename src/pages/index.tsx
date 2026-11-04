@@ -55,12 +55,12 @@ export function About() {
     <Section><div className="grid gap-10 md:grid-cols-2"><div><h2 className="text-2xl font-bold">Our vision</h2><p className="mt-3 text-charcoal/70">To develop into a trusted international technology consultancy delivering intelligent, scalable and practical solutions to organizations across industries.</p></div><div><h2 className="text-2xl font-bold">Our mission</h2><p className="mt-3 text-charcoal/70">To empower organizations through innovative technologies, qualified professionals and measurable technology-driven outcomes.</p></div></div></Section>
     <Section tint><Heading title="Every successful solution begins with understanding the right problem." sub="Our founding philosophy" /><ul className="grid gap-3 md:grid-cols-2">{["An idea must become an executable plan.", "A real business problem must be identified.", "The correct technology must be selected.", "Qualified and knowledgeable professionals must execute the solution.", "Results must be tested and verified.", "Deliverables must provide meaningful business value."].map((t) => <li key={t} className="flex gap-2 rounded-md bg-white p-4"><Check className="shrink-0 text-royal" size={18} aria-hidden />{t}</li>)}</ul></Section>
     <Section><div className="grid gap-10 md:grid-cols-3"><div className="flex aspect-square items-center justify-center rounded-lg bg-mist text-silver" role="img" aria-label="Founder photo placeholder"><UserRound size={72} /></div>
-      <div className="space-y-4 md:col-span-2"><h2 className="text-2xl font-bold">Founder's message</h2>
-        <p>GJen Global was envisioned with the belief that technology should address meaningful challenges and create measurable value.</p>
-        <p>My academic background in Computer Science and Medical Engineering, with a specialization in AI and Data Analytics, has shaped my interest in Artificial Intelligence, Machine Learning, Software Engineering and intelligent technology applications.</p>
-        <p>With the guidance and encouragement of my father, the vision evolved beyond simply developing a technology business into establishing a consultancy focused on identifying real industrial requirements, engaging qualified professionals and delivering practical solutions.</p>
-        <p>Our journey begins with a commitment to continuous learning, technical excellence, collaboration and responsible innovation.</p>
-        <p className="font-semibold">Gracia Jeniefer<br /><span className="font-normal text-charcoal/70">Founder</span></p></div></div></Section>
+            <div className="space-y-4 md:col-span-2"><h2 className="text-2xl font-bold">Vision and Message</h2>
+        <p>GJen Global was envisioned by Gracia Jeniefer with the belief that technology should address meaningful challenges and create measurable value.</p>
+        <p>The team's professional background in Computer Science, Artificial Intelligence, Machine Learning, Data Analytics and Software Engineering has shaped GJen Global's focus on intelligent technology applications.</p>
+        <p>With the advice and encouragement of mentors, including professional technocrats and experienced engineering minds, the vision evolved beyond simply developing a technology business into establishing a consultancy focused on identifying real industrial requirements, engaging qualified professionals and delivering practical solutions.</p>
+        <p>GJen Global's journey begins with a commitment to continuous learning, technical excellence, collaboration and responsible innovation.</p>
+        <p className="font-semibold">Gracia Jeniefer<br /><span className="font-normal text-charcoal/70">Founder &amp; Chief Technology Officer (CTO)</span></p></div></div></Section>
     <CTASection title="Let's talk about your project." />
   </>;
 }
@@ -89,7 +89,7 @@ export function Solutions() {
 export function Industries() {
   useSEO("/industries");
   return <>
-    <Section dark><h1 className="text-4xl font-extrabold">Industries We Serve with AI and Technology Solutions</h1><p className="mt-4 max-w-2xl text-silver">{SUMMARY} These are target industries and potential applications. We do not claim existing contracts or established domain expertise in them.</p></Section>
+    <Section dark><h1 className="text-4xl font-extrabold">Industries We Serve with AI and Technology Solutions</h1><p className="mt-4 max-w-2xl text-silver">{SUMMARY} These are target industries and potential applications. </p></Section>
     <Section><div className="grid gap-5 md:grid-cols-2">{industries.map((i) => <article key={i.name} className="rounded-lg border border-silver/40 p-6"><h2 className="text-lg font-bold">{i.name}</h2><dl className="mt-3 space-y-2 text-sm"><div><dt className="font-semibold">Common challenges</dt><dd className="text-charcoal/70">{i.challenges}</dd></div><div><dt className="font-semibold">Potential applications</dt><dd className="text-charcoal/70">{i.apps}</dd></div><div><dt className="font-semibold">Relevant services</dt><dd className="text-charcoal/70">{i.services}</dd></div></dl></article>)}</div></Section>
     <CTASection />
   </>;
