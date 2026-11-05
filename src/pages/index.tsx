@@ -60,7 +60,7 @@ export function About() {
         <p>The team's professional background in Computer Science, Artificial Intelligence, Machine Learning, Data Analytics and Software Engineering has shaped GJen Global's focus on intelligent technology applications.</p>
         <p>With the advice and encouragement of mentors, including professional technocrats and experienced engineering minds, the vision evolved beyond simply developing a technology business into establishing a consultancy focused on identifying real industrial requirements, engaging qualified professionals and delivering practical solutions.</p>
         <p>GJen Global's journey begins with a commitment to continuous learning, technical excellence, collaboration and responsible innovation.</p>
-        <p className="font-semibold">Gracia Jeniefer<br /><span className="font-normal text-charcoal/70">Founder &amp; Chief Technology Officer (CTO)</span></p></div></div></Section>
+        <p className="font-semibold">Gracia Jeniefer<br /><span className="font-normal text-charcoal/70">Chief Technology Officer (CTO)</span></p></div></div></Section>
     <CTASection title="Let's talk about your project." />
   </>;
 }
