@@ -9,7 +9,7 @@ export function schemasFor(path: string, site: string): object[] {
     "@context": "https://schema.org", "@type": ["Organization", "ProfessionalService"], "@id": `${site}/#organization`,
     name: NAME, alternateName: "GJen Global", url: `${site}/`, logo: `${site}/logo.svg`, image: `${site}/og-image.png`,
     description: seo["/"].description, slogan: "Intelligence. Innovation. Impact.",
-    founder: { "@type": "Person", name: "Gracia Jeniefer", jobTitle: "Founder and Chief Technology Officer" },
+    founder: { "@type": "Person", name: "Gracia Jeniefer", jobTitle: "Chief Technology Officer" },
     address: { "@type": "PostalAddress", addressLocality: "Chennai", addressRegion: "Tamil Nadu", addressCountry: "IN" },
     areaServed: ["India", "United Arab Emirates", "Middle East", "United Kingdom", "Europe"],
     knowsAbout: ["Artificial intelligence", "Machine learning", "Software engineering", "Data science", "Data analytics", "Business intelligence", "Process automation"],
@@ -19,7 +19,7 @@ export function schemasFor(path: string, site: string): object[] {
   const out: object[] = [org];
   const ctx = "https://schema.org";
   if (path === "/") out.push({ "@context": ctx, "@type": "WebSite", name: "GJen Global", url: `${site}/`, publisher: { "@id": `${site}/#organization` } });
-  if (path === "/about") out.push({ "@context": ctx, "@type": "Person", "@id": `${site}/#founder`, name: "Gracia Jeniefer", jobTitle: "Founder and Chief Technology Officer", worksFor: { "@id": `${site}/#organization` } });
+  if (path === "/about") out.push({ "@context": ctx, "@type": "Person", "@id": `${site}/#founder`, name: "Gracia Jeniefer", jobTitle: "Chief Technology Officer", worksFor: { "@id": `${site}/#organization` } });
   if (path === "/services") services.forEach((s) => out.push({ "@context": ctx, "@type": "Service", name: s.title, serviceType: s.title, description: `${s.problem} ${s.approach}`, provider: { "@id": `${site}/#organization` }, areaServed: ["India", "United Arab Emirates", "United Kingdom", "Europe"] }));
   if (path === "/" || path === "/services") out.push({ "@context": ctx, "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) });
   if (path === "/careers") jobs.filter((j) => j.active).forEach((j) => out.push({ "@context": ctx, "@type": "JobPosting", title: j.title, description: j.description, datePosted: j.datePosted, ...(j.deadline && /^\d{4}-\d{2}-\d{2}/.test(j.deadline) ? { validThrough: j.deadline } : {}), ...(EMP[j.type.toLowerCase()] ? { employmentType: EMP[j.type.toLowerCase()] } : {}), skills: j.skills.join(", "), educationRequirements: j.qualifications, hiringOrganization: { "@type": "Organization", name: NAME, sameAs: `${site}/` }, jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: j.location, addressCountry: "IN" } } }));
